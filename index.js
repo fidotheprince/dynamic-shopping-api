@@ -30,8 +30,16 @@ const prompt = (groceryItems) =>`
 
   Here is the list of grocery items: ${groceryItems} let's categorize them. Just return the JSON string with no formatting please and remove special characters.
 `
-
-app.use(cors())
+const corsOptions = {
+  origin: (origin, callback) => {
+    if(origin === process.env.ORIGIN){
+      callback(null, true)
+    } else {
+      callback(new Error('Not allowed by CORS'))
+    }
+  }
+}
+app.use(cors(corsOptions))
 app.post('/', function (req, res) {
   const groceryItems = req.body.join(", ")
   const content = prompt(groceryItems);
@@ -40,7 +48,6 @@ app.post('/', function (req, res) {
       messages: [{ role: "system", content }],
       model: "gpt-3.5-turbo",
     });
-    console.log(completion.choices[0]) 
     res.send({ status: 'success', data: completion.choices[0]})
   }
   encapsulatedResponse();
