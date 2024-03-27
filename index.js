@@ -40,7 +40,7 @@ const corsOptions = {
   }
 }
 app.use(cors(corsOptions))
-app.post('/categorize', function (req, res) {
+app.post('/', function (req, res) {
   const groceryItems = req.body.join(", ")
   const content = prompt(groceryItems);
   const encapsulatedResponse = async () => {
