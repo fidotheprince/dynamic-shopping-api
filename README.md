@@ -1,6 +1,6 @@
 # Description
 
-This is a REST API / Server Application that communicates with Open AI's text model GPT-3.5 Turbo. 
+This REST API / Server communicates with Open AI's text model GPT-3.5 Turbo. 
 The application then gathers the response from the model and sends it back to the client. The native client for this application can be found [here](https://effulgent-praline-4dbf11.netlify.app/). Also here is the repository for said client, [here](https://github.com/fidotheprince/dynamic-shopping-list).
 
 # System Diagram
